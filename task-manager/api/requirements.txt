@@ -1,6 +1,0 @@
-# Requirements for Vercel serverless function
-# This file tells Vercel which Python packages to install
-
-# Copy requirements from backend
--r ../backend/requirements.txt
-
