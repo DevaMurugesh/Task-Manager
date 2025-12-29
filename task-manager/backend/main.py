@@ -15,9 +15,15 @@ app = FastAPI(title="Task Manager API")
 
 # CORS Configuration - Allows React frontend to communicate with backend
 # Without this, browsers will block requests from React (port 3000) to FastAPI (port 8000)
+# Get allowed origins from environment variable (for Vercel deployment)
+allowed_origins = os.getenv(
+    "ALLOWED_ORIGINS",
+    "http://localhost:3000"
+).split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # React default port
+    allow_origins=allowed_origins,  # Supports multiple origins (localhost + Vercel domain)
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, PUT, DELETE)
     allow_headers=["*"],  # Allows all headers

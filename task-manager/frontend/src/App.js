@@ -17,8 +17,8 @@ function App() {
   });
   const [editingId, setEditingId] = useState(null);
 
-  // API Base URL
-  const API_URL = 'http://localhost:8000';
+  // API Base URL - Uses environment variable in production, localhost in development
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000';
 
   // Load tasks when app starts
   useEffect(() => {
